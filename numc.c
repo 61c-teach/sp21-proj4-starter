@@ -307,44 +307,38 @@ static PyMappingMethods Matrix61c_mapping = {
 /* NUMBER METHODS */
 
 /*
- * Adds two numc.Matrix (Matrix61c) objects together. The first operand is self, and
- * the second operand can be obtained by casting `args`.
- * You will have to check if the arguments' dimensions match and if the second operand is an
- * instance of Matrix61c, and throw a type error if anything is violated.
+ * Add the second numc.Matrix (Matrix61c) object to the first one. The first operand is
+ * self, and the second operand can be obtained by casting `args`.
  */
 static PyObject *Matrix61c_add(Matrix61c* self, PyObject* args) {
     /* TODO: YOUR CODE HERE */
 }
 
 /*
- * Subtracts the second numc.Matrix (Matrix61c) object from the first one. The first operand is
+ * Substract the second numc.Matrix (Matrix61c) object from the first one. The first operand is
  * self, and the second operand can be obtained by casting `args`.
- * You will have to check if the arguments' dimensions match and if the second operand is an
- * instance of Matrix61c, and throw a type error if anything is violated.
  */
 static PyObject *Matrix61c_sub(Matrix61c* self, PyObject* args) {
     /* TODO: YOUR CODE HERE */
 }
 
 /*
- * Multiplies two numc.Matrix (Matrix61c) objects together. The first operand is self, and
- * the second operand can be obtained by casting `args`.
- * You will have to check if the arguments' dimensions are valid and if the second operand is an
- * instance of Matrix61c, and throw a type error if anything is violated.
+ * NOT element-wise multiplication. The first operand is self, and the second operand
+ * can be obtained by casting `args`.
  */
 static PyObject *Matrix61c_multiply(Matrix61c* self, PyObject *args) {
     /* TODO: YOUR CODE HERE */
 }
 
 /*
- * Negates the given numc.Matrix (Matrix61c).
+ * Negates the given numc.Matrix.
  */
 static PyObject *Matrix61c_neg(Matrix61c* self) {
     /* TODO: YOUR CODE HERE */
 }
 
 /*
- * Take the element-wise absolute value of this numc.Matrix (Matrix61c).
+ * Take the element-wise absolute value of this numc.Matrix.
  */
 static PyObject *Matrix61c_abs(Matrix61c *self) {
     /* TODO: YOUR CODE HERE */
@@ -368,7 +362,7 @@ static PyNumberMethods Matrix61c_as_number = {
 
 /* INSTANCE METHODS */
 /*
- * Given a numc.Matrix self, parse `args` to (int) row, (int) col, and (double) val.
+ * Given a numc.Matrix self, parse `args` to (int) row, (int) col, and (double/int) val.
  * This function should return None in Python.
  */
 static PyObject *Matrix61c_set_value(Matrix61c *self, PyObject* args) {
