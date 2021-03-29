@@ -1,6 +1,6 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "../include/matrix.h"
+#include "../src/matrix.h"
 #include <stdio.h>
 
 /* Test Suite setup and cleanup functions: */
