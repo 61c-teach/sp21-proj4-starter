@@ -130,7 +130,6 @@ class TestSet(TestCase):
         dp_mat.set(rand_row, rand_col, 2)
         nc_mat.set(rand_row, rand_col, 2)
         self.assertTrue(cmp_dp_nc_matrix(dp_mat, nc_mat))
-        self.assertEquals(nc_mat.get(rand_row, rand_col), 2)
 
 class TestShape(TestCase):
     def test_shape(self):
