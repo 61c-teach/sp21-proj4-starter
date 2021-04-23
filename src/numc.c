@@ -33,7 +33,7 @@ static int init_fill(PyObject *self, int rows, int cols, double val) {
 /* Matrix(rows, cols, 1d_list). Fill a matrix with dimension rows * cols with 1d_list values */
 static int init_1d(PyObject *self, int rows, int cols, PyObject *lst) {
     if (rows * cols != PyList_Size(lst)) {
-        PyErr_SetString(PyExc_TypeError, "Incorrect number of elements in list");
+        PyErr_SetString(PyExc_ValueError, "Incorrect number of elements in list");
         return -1;
     }
     matrix *new_mat;
@@ -56,19 +56,19 @@ static int init_1d(PyObject *self, int rows, int cols, PyObject *lst) {
 static int init_2d(PyObject *self, PyObject *lst) {
     int rows = PyList_Size(lst);
     if (rows == 0) {
-        PyErr_SetString(PyExc_TypeError, "Cannot initialize numc.Matrix with an empty list");
+        PyErr_SetString(PyExc_ValueError, "Cannot initialize numc.Matrix with an empty list");
         return -1;
     }
     int cols;
     if (!PyList_Check(PyList_GetItem(lst, 0))) {
-        PyErr_SetString(PyExc_TypeError, "List values not valid");
+        PyErr_SetString(PyExc_ValueError, "List values not valid");
         return -1;
     } else {
         cols = PyList_Size(PyList_GetItem(lst, 0));
     }
     for (int i = 0; i < rows; i++) {
         if (!PyList_Check(PyList_GetItem(lst, i)) || PyList_Size(PyList_GetItem(lst, i)) != cols) {
-            PyErr_SetString(PyExc_TypeError, "List values not valid");
+            PyErr_SetString(PyExc_ValueError, "List values not valid");
             return -1;
         }
     }
@@ -141,7 +141,7 @@ static int Matrix61c_init(PyObject *self, PyObject *args, PyObject *kwds) {
         }
 
         if (double_low >= double_high) {
-            PyErr_SetString(PyExc_TypeError, "Invalid arguments");
+            PyErr_SetString(PyExc_ValueError, "Invalid arguments");
             return -1;
         }
 
@@ -288,7 +288,7 @@ static int Matrix61c_set_subscript(Matrix61c* self, PyObject *key, PyObject *v) 
         }
         for (int i = 0; i < cols; i++) {
             if (!PyFloat_Check(PyList_GetItem(v, i)) && !PyLong_Check(PyList_GetItem(v, i))) {
-                PyErr_SetString(PyExc_TypeError, "Value is not valid");
+                PyErr_SetString(PyExc_ValueError, "Value is not valid");
                 return -1;
             }
             set(self->mat, index, i, PyFloat_AsDouble(PyList_GetItem(v, i)));
